@@ -1,0 +1,15 @@
+{
+    "vertex-fill": "white",
+    "edge-fill-opacity": 0.3,
+    "vertices": {
+        "3": {"fill": "blue"}
+    },
+    "hyperedges": [
+        {"vertices": [0, 1, 2], "fill": "blue"},
+        {"vertices": [0, 3, 4], "fill": "green"},
+        {"vertices": [3, 4, 5], "fill": "red"},
+        {"vertices": [4, 5, 8], "fill": "red"},
+        {"vertices": [2, 6, 7], "fill": "blue"},
+        {"vertices": [7, 6, 8], "fill": "green"}
+    ]
+}

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="-1.680000 -12.000000 256.400002 245.720001">
+    <path d="
+        M 233.516588 126.844141
+        L 169.836580 162.514139
+        A 18.000000 18.000000 0 0 1 143.115930 145.158342
+        L 150.665933 63.224344
+        A 18.000000 18.000000 0 0 1 180.038519 50.986028
+        L 236.168524 97.250028
+        A 18.000000 18.000000 0 0 1 233.516588 126.844141
+        " fill="blue" fill-opacity="0.300000" stroke="black" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linecap="round" />
+    <path d="
+        M 173.537483 159.764254
+        L 114.547492 216.674258
+        A 18.000000 18.000000 0 0 1 84.499291 207.716564
+        L 70.786286 147.496563
+        A 18.000000 18.000000 0 0 1 89.155648 125.518626
+        L 161.858643 128.828624
+        A 18.000000 18.000000 0 0 1 173.537483 159.764254
+        " fill="green" fill-opacity="0.300000" stroke="black" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linecap="round" />
+    <path d="
+        M 105.887710 139.503437
+        L 119.600715 199.723439
+        A 18.000000 18.000000 0 0 1 92.329144 218.869420
+        L 18.599141 171.559423
+        A 18.000000 18.000000 0 0 1 24.534680 138.812522
+        L 84.551678 125.902519
+        A 18.000000 18.000000 0 0 1 105.887710 139.503437
+        " fill="red" fill-opacity="0.300000" stroke="black" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linecap="round" />
+    <path d="
+        M 92.122318 161.097481
+        L 32.105320 174.007485
+        A 18.000000 18.000000 0 0 1 11.002454 151.500562
+        L 33.158456 73.347562
+        A 18.000000 18.000000 0 0 1 66.044485 69.222497
+        L 103.905482 134.465493
+        A 18.000000 18.000000 0 0 1 92.122318 161.097481
+        " fill="red" fill-opacity="0.300000" stroke="black" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linecap="round" />
+    <path d="
+        M 138.843091 5.830758
+        L 181.853086 52.706757
+        A 18.000000 18.000000 0 0 1 160.754515 81.081099
+        L 75.411521 39.816099
+        A 18.000000 18.000000 0 0 1 80.881888 5.767059
+        L 123.214888 0.156059
+        A 18.000000 18.000000 0 0 1 138.843091 5.830758
+        " fill="blue" fill-opacity="0.300000" stroke="black" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linecap="round" />
+    <path d="
+        M 136.844313 32.039776
+        L 61.740313 92.296779
+        A 18.000000 18.000000 0 0 1 35.039060 68.999529
+        L 67.810060 14.353525
+        A 18.000000 18.000000 0 0 1 80.881888 5.767059
+        L 123.214888 0.156059
+        A 18.000000 18.000000 0 0 1 136.844313 32.039776
+        " fill="green" fill-opacity="0.300000" stroke="black" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linecap="round" />
+    <circle r="12.000000" cx="161.039993" cy="146.809998" fill="white" fill-opacity="1.000000" stroke="black" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linecap="round" />
+    <circle r="12.000000" cx="224.720001" cy="111.139999" fill="white" fill-opacity="1.000000" stroke="black" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linecap="round" />
+    <circle r="12.000000" cx="168.589996" cy="64.875999" fill="white" fill-opacity="1.000000" stroke="black" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linecap="round" />
+    <circle r="12.000000" cx="102.050003" cy="203.720001" fill="blue" fill-opacity="1.000000" stroke="black" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linecap="round" />
+    <circle r="12.000000" cx="88.336998" cy="143.500000" fill="white" fill-opacity="1.000000" stroke="black" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linecap="round" />
+    <circle r="12.000000" cx="28.320000" cy="156.410004" fill="white" fill-opacity="1.000000" stroke="black" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linecap="round" />
+    <circle r="12.000000" cx="83.247002" cy="23.611000" fill="white" fill-opacity="1.000000" stroke="black" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linecap="round" />
+    <circle r="12.000000" cx="125.580002" cy="18.000000" fill="white" fill-opacity="1.000000" stroke="black" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linecap="round" />
+    <circle r="12.000000" cx="50.476002" cy="78.257004" fill="white" fill-opacity="1.000000" stroke="black" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linecap="round" />
+</svg>
