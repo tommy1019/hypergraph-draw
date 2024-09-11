@@ -18,7 +18,7 @@ For example if the following json is written to a file called hypergraph.json.
     "vertices": {
         "3": {"fill": "blue"}
     },
-    "hyperedges": [
+    "edges": [
         {"vertices": [0, 1, 2], "fill": "blue"},
         {"vertices": [0, 3, 4], "fill": "green"},
         {"vertices": [3, 4, 5], "fill": "red"},
