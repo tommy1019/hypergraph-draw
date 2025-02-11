@@ -10,10 +10,10 @@
 
 #include "Vec2f.h"
 
-#define JSON_ERR(msg, ...)                                                                                                                                                                                                 \
-    do {                                                                                                                                                                                                                   \
-        fprintf(stderr, msg "\n" __VA_OPT__(, ) __VA_ARGS__);                                                                                                                                                              \
-        exit(1);                                                                                                                                                                                                           \
+#define JSON_ERR(msg, ...)                                                                                                                                                         \
+    do {                                                                                                                                                                           \
+        fprintf(stderr, msg "\n" __VA_OPT__(, ) __VA_ARGS__);                                                                                                                      \
+        exit(1);                                                                                                                                                                   \
     } while (false);
 
 struct Vertex {
@@ -48,8 +48,8 @@ int main(int argc, char** argv) {
         JSON_ERR("missing edges field");
 
     struct {
-        Vec2f min = { INFINITY, INFINITY };
-        Vec2f max = { -INFINITY, -INFINITY };
+        Vec2f min = {INFINITY, INFINITY};
+        Vec2f max = {-INFINITY, -INFINITY};
         Vec2f size;
     } bounds;
 
@@ -147,6 +147,7 @@ int main(int argc, char** argv) {
     std::string edge_stroke = "black";
     double edge_stroke_opacity = 1;
     double edge_stroke_width = 1;
+    std::string edge_stroke_dash = "none";
     bool edge_hull = false;
 
     {
@@ -182,6 +183,9 @@ int main(int argc, char** argv) {
         if (json.contains("edge-stroke-width") && json["edge-stroke-width"].is_number())
             edge_stroke_width = json["edge-stroke-width"].get<double>();
 
+        if (json.contains("edge-stroke-dash") && json["edge-stroke-dash"].is_string())
+            edge_stroke_dash = json["edge-stroke-dash"].get<std::string>();
+
         if (json.contains("edge-convex-hull") && json["edge-convex-hull"].is_boolean())
             edge_hull = json["edge-convex-hull"].get<bool>();
     }
@@ -202,6 +206,7 @@ int main(int argc, char** argv) {
         std::string cur_edge_stroke = edge_stroke;
         double cur_edge_stroke_opacity = edge_stroke_opacity;
         double cur_edge_stroke_width = edge_stroke_width;
+        std::string cur_edge_stroke_dash = edge_stroke_dash;
 
         double cur_edge_draw_radius = edge_draw_radius;
 
@@ -224,6 +229,9 @@ int main(int argc, char** argv) {
 
         if (e.json.contains("radius") && e.json["radius"].is_number())
             cur_edge_draw_radius = e.json["radius"].get<double>();
+
+        if (e.json.contains("dash") && e.json["dash"].is_string())
+            cur_edge_stroke_dash = e.json["dash"].get<std::string>();
 
         if (e.json.contains("convex-hull") && e.json["convex-hull"].is_boolean())
             cur_edge_hull = e.json["convex-hull"].get<bool>();
@@ -315,7 +323,7 @@ int main(int argc, char** argv) {
 
                 auto determinant = a1 * b2 - a2 * b1;
 
-                Vec2f intersect{ (b2 * c1 - b1 * c2) / determinant, (a1 * c2 - a2 * c1) / determinant };
+                Vec2f intersect{(b2 * c1 - b1 * c2) / determinant, (a1 * c2 - a2 * c1) / determinant};
 
                 if (determinant < 0.0001) {
                     intersect = (p1 + p2) / 2.0f;
@@ -364,12 +372,13 @@ int main(int argc, char** argv) {
             edge_line(vertices[edge_verts[1]].pos, vertices[edge_verts[0]].pos, vertices[edge_verts[1]].pos, edge_stroke, edge_fill, false);
             edge_line(vertices[edge_verts[0]].pos, vertices[edge_verts[1]].pos, vertices[edge_verts[0]].pos, edge_stroke, edge_fill, false);
 
-            printf("        \" fill=\"%s\" fill-opacity=\"%f\" stroke=\"%s\" stroke-opacity=\"%f\" stroke-width=\"%f\" stroke-linecap=\"round\" />\n",
+            printf("        \" fill=\"%s\" fill-opacity=\"%f\" stroke=\"%s\" stroke-opacity=\"%f\" stroke-width=\"%f\" stroke-linecap=\"round\" stroke-dasharray=\"%s\" />\n",
                    cur_edge_fill.c_str(),
                    cur_edge_fill_opacity,
                    cur_edge_stroke.c_str(),
                    cur_edge_stroke_opacity,
-                   cur_edge_stroke_width);
+                   cur_edge_stroke_width,
+                   cur_edge_stroke_dash.c_str());
 
         } else if (edge_verts.size() >= 2) {
             printf("    <path d=\"\n");
@@ -393,16 +402,20 @@ int main(int argc, char** argv) {
             edge_line(prev, vertices[edge_verts[0]].pos, vertices[edge_verts[1]].pos, edge_stroke, edge_fill, false);
             edge_line(vertices[edge_verts[0]].pos, vertices[edge_verts[1]].pos, vertices[edge_verts[2]].pos, edge_stroke, edge_fill, false);
 
-            printf("        \" fill=\"%s\" fill-opacity=\"%f\" stroke=\"%s\" stroke-opacity=\"%f\" stroke-width=\"%f\" stroke-linecap=\"round\" />\n",
+            printf("        \" fill=\"%s\" fill-opacity=\"%f\" stroke=\"%s\" stroke-opacity=\"%f\" stroke-width=\"%f\" stroke-linecap=\"round\" stroke-dasharray=\"%s\" />\n",
                    cur_edge_fill.c_str(),
                    cur_edge_fill_opacity,
                    cur_edge_stroke.c_str(),
                    cur_edge_stroke_opacity,
-                   cur_edge_stroke_width);
+                   cur_edge_stroke_width,
+                   cur_edge_stroke_dash.c_str());
         }
 
         if (e.json.contains("label") && e.json["label"].is_string()) {
-            printf("<text x=\"%f\" y=\"%f\" dominant-baseline=\"middle\" text-anchor=\"middle\" font-size=\"10\">%s</text>", mean.x, mean.y, e.json["label"].get<std::string>().c_str());
+            printf("<text x=\"%f\" y=\"%f\" dominant-baseline=\"middle\" text-anchor=\"middle\" font-size=\"10\">%s</text>",
+                   mean.x,
+                   mean.y,
+                   e.json["label"].get<std::string>().c_str());
         }
     }
 
@@ -444,7 +457,10 @@ int main(int argc, char** argv) {
                cur_vertex_stroke_width);
 
         if (v.json.contains("label") && v.json["label"].is_string()) {
-            printf("<text x=\"%f\" y=\"%f\" dominant-baseline=\"middle\" text-anchor=\"middle\" font-size=\"10\">%s</text>", v.pos.x, v.pos.y, v.json["label"].get<std::string>().c_str());
+            printf("<text x=\"%f\" y=\"%f\" dominant-baseline=\"middle\" text-anchor=\"middle\" font-size=\"10\">%s</text>",
+                   v.pos.x,
+                   v.pos.y,
+                   v.json["label"].get<std::string>().c_str());
         }
     }
 

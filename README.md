@@ -87,6 +87,7 @@ These options are set at the top level in the json and set defaults for all rele
 | edge-stroke | Color to draw the outline of each edge | black |
 | edge-stroke-opacity | Opacity for the outline of each edge. Float from 0 to 1 | 1.0 |
 | edge-stroke-width | Thickness of the outline for each edge | 1.0 |
+| edge-stroke-dash | How each edge is dashed, using svg notation | none |
 | edge-convex-hull | True to use the convex hull of vertices in the hyperedge instead of drawing a non-convex shape | false |
 
 ### Vertex Options
@@ -112,3 +113,4 @@ These options are set per-hyperedge and override options set globally.
 | stroke | Color to draw the outline of the hyperedge | edge-stroke |
 | stroke-opacity | Opacity for the outline of the hyperedge. Float from 0 to 1 | edge-stroke-opacity |
 | stroke-width | Thickness of the outline for the hyperedge | edge-stroke-width |
+| dash | How the edge is dashed, using svg notation | none |
