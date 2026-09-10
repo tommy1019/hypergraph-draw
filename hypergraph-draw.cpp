@@ -259,13 +259,13 @@ int main(int argc, char** argv) {
 
             size_t cur_index = min_index;
             do {
-                new_verts.push_back(cur_index);
+                new_verts.push_back(edge_verts[cur_index]);
 
                 size_t best = (cur_index + 1) % edge_verts.size();
 
                 for (int i = 0; i < edge_verts.size(); i++) {
                     if (orientation(vertices[edge_verts[cur_index]].pos, vertices[edge_verts[i]].pos, vertices[edge_verts[best]].pos) == COUNTERCLOCKWISE)
-                        best = edge_verts[i];
+                        best = i;
                 }
 
                 cur_index = best;
